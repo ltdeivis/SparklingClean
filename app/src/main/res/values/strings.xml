@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">SparklingClean</string>
-    <string name="email_txt">Email</string>
+    <string name="appName">SparklingClean</string>
+    <string name="emailTxt">Email</string>
+    <string name="usernameHint">Username</string>
+    <string name="passwordHint">Password</string>
+    <string name="returnBtn">Return</string>
+    <string name="nextBtn">Next</string>
 </resources>
