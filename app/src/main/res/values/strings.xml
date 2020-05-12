@@ -1,8 +1,20 @@
 <resources>
+    <!--Login activity-->
     <string name="appName">SparklingClean</string>
-    <string name="emailTxt">Email</string>
     <string name="usernameHint">Username</string>
     <string name="passwordHint">Password</string>
+    <string name="login">Log in</string>
+    <string name="register">Register</string>
+    <string name="forgotPW">Forgot password or username</string>
+
+    <!--Register1 Activity-->
+    <string name="registerUsername">Enter a username:</string>
+    <string name="registerPassword">Enter a password:</string>
+    <string name="confirmPassword">Confirm password:</string>
+    <string name="confirmPasswordHint">Confirm password</string>
     <string name="returnBtn">Return</string>
     <string name="nextBtn">Next</string>
+
+
+
 </resources>
