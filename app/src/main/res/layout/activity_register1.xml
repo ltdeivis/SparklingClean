@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/loginbg"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/registerUsernameTxt"
+        android:layout_width="206dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="192dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/usernameHint"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/enterUsernameLbl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/registerPasswordTxt"
+        android:layout_width="208dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/passwordHint"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/registerUsernameTxt"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/registerUsernameTxt"
+        app:layout_constraintTop_toBottomOf="@+id/registerUsernameTxt" />
+
+    <EditText
+        android:id="@+id/confirmPasswordTxt"
+        android:layout_width="208dp"
+        android:layout_height="42dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/confirmPasswordHint"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/nextBtn"
+        app:layout_constraintStart_toStartOf="@+id/registerPasswordTxt"
+        app:layout_constraintTop_toBottomOf="@+id/registerPasswordTxt" />
+
+    <TextView
+        android:id="@+id/enterUsernameLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/registerUsername"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/registerUsernameTxt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/enterPasswordLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/registerPassword"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/enterUsernameLbl"
+        app:layout_constraintTop_toBottomOf="@+id/enterUsernameLbl" />
+
+    <TextView
+        android:id="@+id/confirmPasswordLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirmPassword"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/returnBtn"
+        app:layout_constraintStart_toStartOf="@+id/enterPasswordLbl"
+        app:layout_constraintTop_toBottomOf="@+id/enterPasswordLbl" />
+
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="252dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/nextBtn"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <Button
+        android:id="@+id/returnBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="252dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/returnBtn"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

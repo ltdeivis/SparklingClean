@@ -8,13 +8,36 @@
     <string name="forgotPW">Forgot password or username</string>
 
     <!--Register1 Activity-->
+    <!--Labels-->
     <string name="registerUsername">Enter a username:</string>
     <string name="registerPassword">Enter a password:</string>
     <string name="confirmPassword">Confirm password:</string>
+
+    <!--Hints-->
     <string name="confirmPasswordHint">Confirm password</string>
+
+    <!--Buttons-->
     <string name="returnBtn">Return</string>
     <string name="nextBtn">Next</string>
 
+    <!--Register2 Activity-->
+    <!--Labels-->
+    <string name="registerFN">First name:</string>
+    <string name="registerLN">Last name:</string>
+    <string name="registerEmail">Email:</string>
+    <string name="registerDoB">Date of birth:</string>
+    <string name="registerAddress">Address:</string>
+    <string name="registerPhoneNum">Telephone number:</string>
 
+    <!--Hints-->
+    <string name="fnHint">First name</string>
+    <string name="lNHint">Last name</string>
+    <string name="emailHint">Email</string>
+    <string name="doBHint">Date of birth</string>
+    <string name="addressHint">Address</string>
+    <string name="phoneNumHint">Telephone number</string>
+
+    <!--Buttons-->
+    <string name="finishBtn">Finish</string>
 
 </resources>
