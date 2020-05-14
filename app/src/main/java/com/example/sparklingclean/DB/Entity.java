@@ -5,13 +5,11 @@ import java.sql.ResultSet;
 
 public interface Entity {
 
-    public void updateField(String sqlStatement);
+    void updateField(String sqlStatement);
 
-    public ResultSet getField(String sqlStatement);
+    ResultSet getField(String sqlStatement);
 
-    public void insertField(String sqlStatement);
+    void insertField(String sqlStatement);
 
-    public void deleteField(String sqlStatement);
-
-    public void deleteRow();
+    void deleteField(String sqlStatement);
 }

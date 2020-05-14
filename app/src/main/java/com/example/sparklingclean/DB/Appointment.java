@@ -9,34 +9,41 @@ public class Appointment extends DatabaseObject {
 
     private static String tableName = "appointment";
 
-    private String app_date;
-    private String app_time;
-    private String notes;
-    private String rating;
-    private String hours;
+    private String app_date = "";
+    private String app_time = "";
+    private String notes = "";
+    private String rating = "";
+    private String hours = "";
     private int client_id;
     private int employee_id;
 
     /**
-     * Runs insert into DB function.
-     * @param client_id
+     * Default constructor for Appointment.
+     * @param client_id ID of the client.
+     * @param app_date Requested date of appointment.
+     * @param app_time Requested time of appointment.
+     * @param hours Duration of the appointment.
      */
     public Appointment(int client_id, String app_date, String app_time, String hours){
+        this.client_id = client_id;
+        this.app_date = app_date;
+        this.app_time = app_time;
+        this.hours = hours;
+
         insertIntoDB();
     }
 
     /**
-     * Constructor
+     * Default empty constructor
      */
     private Appointment(){
 
     }
 
     /**
-     * Delete appointment based on PK
+     * Delete itself from database.
      */
-    @Override
-    public void deleteRow(){
+    public void deleteSelf(){
         this.deleteEntity(tableName);
     }
 
@@ -67,20 +74,6 @@ public class Appointment extends DatabaseObject {
     public static List<Appointment> fetchEmployeeAppointments(int employee_id){
         Appointment appointment = new Appointment();
         return appointment.fetchAppointments(employee_id, "employee_id");
-    }
-
-    /**
-     * Inserts an empty appointment into the database
-     * @param client_id Client_id for insertion
-     * @param employee_id Employee_id for insertion
-     * @return A single appointment
-     */
-    public static Appointment createAppointment(int client_id, int employee_id) {
-        Appointment appointment = new Appointment();
-        appointment.client_id = client_id;
-        appointment.employee_id = employee_id;
-        appointment.insertIntoDB();
-        return appointment;
     }
 
     /**
@@ -220,69 +213,59 @@ public class Appointment extends DatabaseObject {
     }
 
     /**
-     * Inserts empty appointment into db
+     * Inserts pending appointment into db
      * @return
      */
     private boolean insertIntoDB() {
-
-        //TODO: Check if an employee does not have an appointment at that time and day already.
-        // Checking if there are no name duplicates.
-//        ResultSet rs = getField("SELECT ID FROM appointment WHERE name ='" + name + "'");
-//        try {
-//            if(rs.next()){
-//                closeConnection();
-//                return false;
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        // Inserting blank appointment into the database.
-//        String vals = "0" + ",'" + app_date + "','" + app_time + "','" + notes + "','" + rating + "','" + hours + "'," + client_id + "," + employee_id;
-//        insertEntity(vals,tableName);
-//        ResultSet primaryKeyRS = getField("SELECT ID FROM appointment WHERE name ='" + name + "'");
-//        try {
-//            while (primaryKeyRS.next()){
-//                primaryKey = primaryKeyRS.getInt(1);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        closeConnection();
+        String query = "SELECT ID FROM appointment WHERE app_date ='" + app_date + "' AND app_time ='"
+                + app_time + "' AND client_id ='" + String.valueOf(client_id) + "'";
+        ResultSet rs = getField(query);
+        try {
+            if(rs.next()){
+                closeConnection();
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // Inserting pending appointment
+        String vals = "0" + ",'" + app_date + "','" + app_time + "','" + notes + "','" + rating + "','" + hours + "'," + client_id + "," + employee_id;
+        insertEntity(vals,tableName);
+        ResultSet primaryKeyRS = getField(query);
+        try {
+            while (primaryKeyRS.next()){
+                primaryKey = primaryKeyRS.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        closeConnection();
         return true;
     }
-
-    /**
-     * Delete object from database
-     */
-    public void delete() {
-        deleteEntity(tableName);
+    
+    public void loadFromDB() {
+        ResultSet rs = getField("SELECT * FROM appointment WHERE id = " + primaryKey);
+        try {
+            while(rs.next()){
+                this.app_date = rs.getString("date");
+                this.app_time = rs.getString("time");
+                this.notes = rs.getString("notes");
+                this.rating = rs.getString("rating");
+                this.hours = rs.getString("hours");
+                this.client_id = rs.getInt("client_id");
+                this.employee_id = rs.getInt("employee_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-
-    /**
-     * Delete all appointments with this client id
-     */
-    public void delete(int supplier_id) {
-        deleteField("DELETE FROM " + tableName + " WHERE supplier_id = " + supplier_id +";");
-    }
-
 
     /**
      * Gets app_date
      * @return app_date
      */
     public String getApp_date(){
-        ResultSet rs = getSingleField("app_date", tableName);
-        try {
-            while(rs.next()){
-                app_date = rs.getString(1);
-            }
-            closeConnection();
-            return app_date;
-        }
-            catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return app_date;
     }
 
     /**
@@ -299,17 +282,7 @@ public class Appointment extends DatabaseObject {
      * @return
      */
     public String getApp_time() {
-        ResultSet rs = getSingleField("app_time", tableName);
-        try {
-            while (rs.next()) {
-                app_time = rs.getString(1);
-            }
-            closeConnection();
-            return app_time;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return app_time;
     }
 
     /**
@@ -326,17 +299,7 @@ public class Appointment extends DatabaseObject {
      * @return notes
      */
     public String getNotes(){
-        ResultSet rs = getSingleField("notes", tableName);
-        try {
-            while(rs.next()){
-                notes = rs.getString(1);
-            }
-            closeConnection();
-            return notes;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return notes;
     }
 
     /**
@@ -345,7 +308,7 @@ public class Appointment extends DatabaseObject {
      */
     public void setnotes(String notes){
         this.notes = notes;
-        updateSingleField(notes, tableName, "stockQ");
+        updateSingleField(notes, tableName, "notes");
     }
 
     /**
@@ -353,17 +316,7 @@ public class Appointment extends DatabaseObject {
      * @return
      */
     public String getRating(){
-        ResultSet rs = getSingleField("rating", tableName);
-        try {
-            while(rs.next()){
-                rating = rs.getString(1);
-            }
-            closeConnection();
-            return rating;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return rating;
     }
 
     /**
@@ -380,17 +333,7 @@ public class Appointment extends DatabaseObject {
      * @return
      */
     public String getHours(){
-        ResultSet rs = getSingleField("hours", tableName);
-        try {
-            while(rs.next()){
-                hours = rs.getString(1);
-            }
-            closeConnection();
-            return hours;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return hours;
     }
 
     /**
@@ -403,7 +346,7 @@ public class Appointment extends DatabaseObject {
     }
 
     /**
-     * Get client_id
+     * Get client_id. Reads from database not memory as it could be changed by manager at any time.
      * @return
      */
     public int getClient_id(){

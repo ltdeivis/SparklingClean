@@ -133,8 +133,4 @@ public class DatabaseObject implements Entity {
         }
         closeConnection();
     }
-
-    @Override
-    public void deleteRow() {
-    }
 }

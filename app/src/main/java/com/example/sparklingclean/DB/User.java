@@ -10,33 +10,39 @@ public class User extends DatabaseObject {
 
     private String firstName = "";
     private String lastName= "";
-    private String DoB = "";
+    private String address = "";
+    private String email = "";
+    private String telNum = "";
+    private String dob = "";
     private String username = "";
     private String password = "";
-    private String email = "";
-    private String address = "";
-    private String secQ = "";
-    private String secA = "";
+    private String type = "";
+    private boolean isAdmin = false;
+
+    private DatabaseObject userObject; // Manager / Employee / Client classes that depend on this instance
 
     /**
-     * Inerts user into DB
-     * @param primaryKey user PK
-     * @param username user username
-     * @param password user password
+     * Static method to create a user and add to the database.
+     * @param username user's username
+     * @param password user's password
      */
-    public User(int primaryKey, String username, String password){
-        this.primaryKey = primaryKey;
-        this.username = username;
-        this.password = password;
+    public static User registerUser(String username, String password) {
+        User user = new User();
+        user.username = username;
+        user.password = password;
 
-        insertIntoDB();
+        if(user.insertIntoDB()) {
+            return user;
+        }
+
+        return null;
     }
 
     /**
-    Create empty user
+     * Empty constructor
      */
-    private User(){
-
+    private User() {
+        this.primaryKey = 0;
     }
 
     /**
@@ -60,7 +66,7 @@ public class User extends DatabaseObject {
      * @return
      */
     private boolean fetchUser(String username, String password){
-        ResultSet rs = getField("SELECT * FROM USER WHERE USERNAME ='" + username + "'" + "AND PASSWORD ='" + password + "'" );
+        ResultSet rs = getField("SELECT * FROM " + tableName + " WHERE username ='" + username + "'" + " AND password ='" + password + "'" );
         try {
             if(rs.next()){
                 this.username = username;
@@ -68,11 +74,12 @@ public class User extends DatabaseObject {
                 this.primaryKey = rs.getInt("id");
                 this.firstName = rs.getString("first_name");
                 this.lastName = rs.getString("last_name");
-                this.DoB = rs.getString("DoB");
-                this.email = rs.getString("email");
                 this.address = rs.getString("address");
-                this.secQ = rs.getString("security_question");
-                this.secA = rs.getString("security_answer");
+                this.email = rs.getString("email");
+                this.telNum = rs.getString("tel_num");
+                this.dob = rs.getString("dob");
+                this.type = rs.getString("type");
+                this.isAdmin = rs.getBoolean("is_admin");
 
                 return true;
             }else{
@@ -85,12 +92,13 @@ public class User extends DatabaseObject {
     }
 
     /**
-     * Inserts new user into database after registering
-     * @return user if true
+     * Inserts new user into database.
+     * @return Returns true if successful.
      */
     public boolean insertIntoDB() {
+        String query = "SELECT id FROM " + tableName + " WHERE username = '" + username + "'";
         // Checking if there are no duplicate username and password combinations
-        ResultSet rs = getField("SELECT ID FROM USER WHERE username ='" + username + "'");
+        ResultSet rs = getField(query);
         try {
             if(rs.next()){
                 closeConnection();
@@ -100,10 +108,11 @@ public class User extends DatabaseObject {
             e.printStackTrace();
         }
         // Inserting blank user into database, primary key is auto incremented
-        String vals = "0" + ",'" + firstName + "','" + lastName + "','" + DoB + "','" + username + "','" + password + "','" + email + "','" + address + "','" + secQ + "','" + secA + "'," + "false";
+        String vals = "0" + ",'" + firstName + "','" + lastName + "','" + address + "','" + email + "','" + telNum
+                + "','" + dob + "','" + username + "','" + password + "','" + type + "'," + "false";
         insertEntity(vals,tableName);
         // Fetching primary key using username and password
-        ResultSet primaryKeyRS = getField("SELECT ID FROM USER WHERE username ='" + username + "' AND password ='" + password + "'" );
+        ResultSet primaryKeyRS = getField(query + " AND password ='" + password + "'" );
         try {
             while (primaryKeyRS.next()){
                 primaryKey = primaryKeyRS.getInt(1);
@@ -120,17 +129,7 @@ public class User extends DatabaseObject {
      * @return
      */
     public String getFirstName(){
-        ResultSet rs = getSingleField("first_name", tableName);
-        try {
-            while(rs.next()){
-                firstName = rs.getString(1);
-            }
-            closeConnection();
-            return firstName;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return firstName;
     }
 
     /**
@@ -143,20 +142,10 @@ public class User extends DatabaseObject {
 
     /**
      * Gets last name
-     * @return
+     * @return Last name
      */
     public String getLastName(){
-        ResultSet rs = getSingleField("last_name", tableName);
-        try {
-            while(rs.next()){
-                lastName = rs.getString(1);
-            }
-            closeConnection();
-            return lastName;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return lastName;
     }
 
     /**
@@ -169,26 +158,19 @@ public class User extends DatabaseObject {
 
     /**
      * Gets DoB
+     * @return Date of birth
      */
     public String getDoB(){
-        ResultSet rs = getSingleField("DoB", tableName);
-        try {
-            DoB = rs.getString(1);
-            closeConnection();
-            return DoB;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return dob;
     }
 
     /**
      * Sets dob
-     * @param DoB
+     * @param dob Date of birth
      */
-    public void setDoB(String DoB){
-        this.DoB = DoB;
-        updateSingleField(DoB, tableName, "dob");
+    public void setDoB(String dob){
+        this.dob = dob;
+        updateSingleField(dob, tableName, "dob");
     }
 
     /**
@@ -196,15 +178,7 @@ public class User extends DatabaseObject {
      * @return
      */
     public String getUsername(){
-        ResultSet rs = getSingleField("username",  tableName);
-        try {
-            username = rs.getString(1);
-            closeConnection();
-            return username;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return username;
     }
 
     /**
@@ -218,18 +192,10 @@ public class User extends DatabaseObject {
 
     /**
      * Gets password
-     * @return
+     * @return Password
      */
     public String getPassword(){
-        ResultSet rs = getSingleField("password",  tableName);
-        try {
-            password = rs.getString(1);
-            closeConnection();
-            return password;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return password;
     }
 
     /**
@@ -246,15 +212,7 @@ public class User extends DatabaseObject {
      * @return
      */
     public String getEmail(){
-        ResultSet rs = getSingleField("email",  tableName);
-        try {
-            email = rs.getString(1);
-            closeConnection();
-            return email;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return email;
     }
 
     /**
@@ -271,65 +229,41 @@ public class User extends DatabaseObject {
      * @return
      */
     public String getAddress(){
-        ResultSet rs = getSingleField("address",  tableName);
-        try {
-            address = rs.getString(1);
-            closeConnection();
-            return address;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return address;
     }
 
     /**
-     * Sets security question
-     * @param secQ
+     * Sets the telephone number
+     * @param telNum Telephone Number
      */
-    public void setSecQ(String secQ){
-        this.secQ = secQ;
-        updateSingleField(secQ, tableName, "security_question");
+    public void setTelNum(String telNum){
+        this.telNum = telNum;
+        updateSingleField(telNum, tableName, "tel_num");
     }
 
     /**
-     * Gets security question
-     * @return
+     * Gets Telephone Number
+     * @return Telephone number
      */
-    public String getSecQ(){
-        ResultSet rs = getSingleField("security_question",  tableName);
-        try {
-            secQ = rs.getString(1);
-            closeConnection();
-            return secQ;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "";
+    public String getTelNum(){
+        return telNum;
     }
 
     /**
-     * Sets security answer
-     * @param secA
+     * Returns type of user.
+     * @param type Type of user.
      */
-    public void setSecA(String secA){
-        this.secA = secA;
-        updateSingleField(secA, tableName, "security_answer");
+    public void setType(String type){
+        this.type = type;
+        updateSingleField(type, tableName, "type");
     }
 
     /**
-     * Gets security answer
-     * @return
+     * Gets admin level of user
+     * @return true if user is an admin
      */
-    public String getSecA(){
-        ResultSet rs = getSingleField("security_answer",  tableName);
-        try {
-            secA = rs.getString(1);
-            closeConnection();
-            return secA;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "";
+    public String getType(){
+        return type;
     }
 
     /**
@@ -348,6 +282,14 @@ public class User extends DatabaseObject {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public void setUserObject(DatabaseObject object) {
+        this.userObject = userObject;
+    }
+
+    public DatabaseObject getUserObject() {
+        return userObject;
     }
 }
 
