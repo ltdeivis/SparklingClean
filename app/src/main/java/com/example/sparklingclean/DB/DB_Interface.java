@@ -25,7 +25,7 @@ public class DB_Interface {
         StrictMode.setThreadPolicy(policy);
         try {
             Log.d("Database", "Attempting to establish connection to database server...");
-            con = DriverManager.getConnection(dbName+";user="+dbUsername+";password="+dbPassword+";");
+            con = DriverManager.getConnection(dbName,dbUsername,dbPassword);
             Log.d("Database", "Connection to " + con.getMetaData().getURL());
             return con;
         } catch (Exception ex) {

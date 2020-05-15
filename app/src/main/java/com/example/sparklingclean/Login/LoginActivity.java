@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.example.sparklingclean.DB.DB_Interface;
 import com.example.sparklingclean.DB.User;
+import com.example.sparklingclean.Firebase.DB.DatabaseTester;
 import com.example.sparklingclean.R;
 
 import java.io.BufferedReader;
@@ -39,8 +40,12 @@ public class LoginActivity extends AppCompatActivity {
     private void loginBtnHandler(View v) {
         username = ((EditText) findViewById(R.id.usernameTxt)).getText().toString();
         password = ((EditText) findViewById(R.id.passowrdTxt)).getText().toString();
-        DoLogin doLogin = new DoLogin();
-        doLogin.execute();
+
+        DatabaseTester firebaseTester = new DatabaseTester();
+
+//        DoLogin doLogin = new DoLogin();
+//        doLogin.execute();
+
 //        Authentication authentication = new Authentication(username, password);
 //        if(authentication.loginUser()) {
 //            User user = authentication.getCurrentUser();
