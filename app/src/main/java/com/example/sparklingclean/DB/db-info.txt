@@ -1,1 +1,1 @@
-jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2339345,sql2339345,nP1%eJ3%
+jdbc:jtds:mysql://sql2.freemysqlhosting.net:3306/sql2339345,sql2339345,nP1%eJ3%

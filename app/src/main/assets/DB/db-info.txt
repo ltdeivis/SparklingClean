@@ -1,0 +1,1 @@
+jdbc:jtds:sqlserver://sql2.freemysqlhosting.net/sql2339345,sql2339345,nP1%eJ3%

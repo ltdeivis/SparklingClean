@@ -1,4 +1,9 @@
 package com.example.sparklingclean.DB;
+
+import android.annotation.SuppressLint;
+import android.os.StrictMode;
+import android.util.Log;
+
 import java.sql.*;
 
 public class DB_Interface {
@@ -13,15 +18,18 @@ public class DB_Interface {
      * Establish connection to DB.
      * @return DB Connnection.
      */
+    @SuppressLint("NewApi")
     public Connection openConnection() {
-
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         try {
-            System.out.println("Attempting to establish connection to database server...");
-            con = DriverManager.getConnection(dbName,dbUsername,dbPassword);
-            System.out.println("Connection to " + con.getMetaData().getURL());
+            Log.d("Database", "Attempting to establish connection to database server...");
+            con = DriverManager.getConnection(dbName+";user="+dbUsername+";password="+dbPassword+";");
+            Log.d("Database", "Connection to " + con.getMetaData().getURL());
             return con;
         } catch (Exception ex) {
-            System.err.println(ex.getMessage());
+            Log.e("Database", ex.getMessage());
         }
         return null;
     }
@@ -49,14 +57,15 @@ public class DB_Interface {
         this.dbUsername = dbUsername;
         this.dbPassword = dbPassword;
 
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        Log.d("Database Driver", "Looking for JTDS Drivers");
+        Class.forName("net.sourceforge.jtds.jdbc.Driver");
+        Log.d("Database Driver", "JTDS Drivers found");
     }
 
     /**
-     * Blank DB interface
+     * Default constructor
      */
     private DB_Interface() {
-
     }
 
     /**
