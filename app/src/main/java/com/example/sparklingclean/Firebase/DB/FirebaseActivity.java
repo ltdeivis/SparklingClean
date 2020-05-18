@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.sparklingclean.R;
+import com.google.firebase.database.DatabaseReference;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -109,7 +110,13 @@ public class FirebaseActivity extends AppCompatActivity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.readBtn).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.readBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseTester tester = new DatabaseTester();
+                tester.writeNewUser("1","davidas", "belfort", "19/05/98", "19 wessex gate", "08319239", "admin", "admin", "deividasliveris@rocketmail.com");
+            }
+        });
 
         Button writeBtn = (Button) findViewById(R.id.writeBtn);
         writeBtn.setOnClickListener(new View.OnClickListener() {
