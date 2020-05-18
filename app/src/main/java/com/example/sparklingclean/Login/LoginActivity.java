@@ -1,5 +1,6 @@
 package com.example.sparklingclean.Login;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.widget.EditText;
 import com.example.sparklingclean.DB.DB_Interface;
 import com.example.sparklingclean.DB.User;
 import com.example.sparklingclean.Firebase.DB.DatabaseTester;
+import com.example.sparklingclean.Firebase.DB.FirebaseActivity;
+import com.example.sparklingclean.MainActivity;
 import com.example.sparklingclean.R;
 
 import java.io.BufferedReader;
@@ -41,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         username = ((EditText) findViewById(R.id.usernameTxt)).getText().toString();
         password = ((EditText) findViewById(R.id.passowrdTxt)).getText().toString();
 
-        DatabaseTester firebaseTester = new DatabaseTester();
+        startActivity(new Intent(LoginActivity.this, FirebaseActivity.class));
 
 //        DoLogin doLogin = new DoLogin();
 //        doLogin.execute();

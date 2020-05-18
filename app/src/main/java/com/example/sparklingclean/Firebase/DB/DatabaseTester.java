@@ -6,13 +6,15 @@ import com.google.firebase.database.FirebaseDatabase;
 public class DatabaseTester {
 
     public DatabaseTester() {
-        testWriteToDB();
+
     }
 
-    private void testWriteToDB() {
+    public void testWriteToDB(String reference, String content) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
+        DatabaseReference myRef = database.getReference(reference);
 
-        myRef.setValue("Yare Yare Daze");
+        myRef.setValue(content);
     }
+
+
 }

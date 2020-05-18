@@ -40,4 +40,9 @@
     <!--Buttons-->
     <string name="finishBtn">Finish</string>
 
+    <string name="title_activity_firebase">FirebaseActivity</string>
+    <string name="writeBtn">Write</string>
+    <string name="readBtn">Read</string>
+    <string name="dummy_content">Firebase Database Test Screen</string>
+
 </resources>
