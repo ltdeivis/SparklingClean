@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.sparklingclean.R;
 import com.google.firebase.database.DatabaseReference;
@@ -113,8 +114,12 @@ public class FirebaseActivity extends AppCompatActivity {
         findViewById(R.id.readBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseTester tester = new DatabaseTester();
-                tester.writeNewUser("1","davidas", "belfort", "19/05/98", "19 wessex gate", "08319239", "admin", "admin", "deividasliveris@rocketmail.com");
+                //DatabaseTester tester = new DatabaseTester();
+                //tester.writeNewUser("1","davidas", "belfort", "19/05/98", "19 wessex gate", "08319239", "admin", "admin", "deividasliveris@rocketmail.com");
+                UserHandler userHandler = new UserHandler();
+                userHandler.addUser("davidas", "belfort", "19/05/98", "19 wessex gate", "08319239", "admin", "admin", "deividasliveris@rocketmail.com");
+                TextView outputTxt = (TextView) findViewById(R.id.outputLbl);
+                outputTxt.setText("Output : " + userHandler.getUser().address);
             }
         });
 

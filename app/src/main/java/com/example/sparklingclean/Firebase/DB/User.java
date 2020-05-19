@@ -1,17 +1,13 @@
 package com.example.sparklingclean.Firebase.DB;
 
-import android.support.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Exclude;
+import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.util.HashMap;
 import java.util.Map;
 
-
-public class User {
+@IgnoreExtraProperties
+public class User implements Entity {
 
     public String firstName;
     public String lastName;
@@ -37,7 +33,9 @@ public class User {
         this.email = email;
     }
 
-    public Map<String, Object> userMap(){
+    @Exclude
+    @Override
+    public Map<String, Object> objectMap(){
         HashMap<String, Object> result = new HashMap<>();
         result.put("first name", firstName);
         result.put("last name", lastName);
