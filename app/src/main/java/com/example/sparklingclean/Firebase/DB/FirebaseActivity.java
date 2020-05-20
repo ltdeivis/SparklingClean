@@ -117,9 +117,9 @@ public class FirebaseActivity extends AppCompatActivity {
                 //DatabaseTester tester = new DatabaseTester();
                 //tester.writeNewUser("1","davidas", "belfort", "19/05/98", "19 wessex gate", "08319239", "admin", "admin", "deividasliveris@rocketmail.com");
                 UserHandler userHandler = new UserHandler();
-                //userHandler.addUser("davidas", "belfort", "19/05/98", "19 wessex gate", "08319239", "admin", "admin", "deividasliveris@rocketmail.com");
+                //userHandler.addUser("JOtaro", "belfort", "19/05/98", "19 wessex gate", "08319239", "admin", "admin", "deividasliveris@rocketmail.com");
                 TextView outputTxt = (TextView) findViewById(R.id.outputLbl);
-                userHandler.findUser("test123");
+                userHandler.findUser("yeet");
                 //outputTxt.setText("Output : " + userHandler.getUser().firstName);
             }
         });

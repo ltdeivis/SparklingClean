@@ -33,6 +33,7 @@ public class User implements Entity {
         this.email = email;
     }
 
+
     @Exclude
     @Override
     public Map<String, Object> objectMap(){
