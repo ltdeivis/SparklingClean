@@ -1,5 +1,6 @@
 package com.example.sparklingclean.Login;
 
+import com.example.sparklingclean.Firebase.DB.FirebaseListener;
 import com.example.sparklingclean.Firebase.DB.User;
 import com.example.sparklingclean.Firebase.DB.UserHandler;
 
@@ -17,14 +18,8 @@ public class Authentication {
         userHandler = new UserHandler();
     }
 
-    public boolean loginUser() {
+    public void loginUser() {
         userHandler.findUser(username, password);
-        if(userHandler.getUser() != null) {
-            return true;
-        }
-        else {
-            return false;
-        }
     }
 
     public boolean registerUser(String firstName, String lastName, String address, String email, String telnum, String dob) {
@@ -39,5 +34,13 @@ public class Authentication {
 
     public User getCurrentUser() {
         return userHandler.getUser();
+    }
+
+    public void addLoginListener(FirebaseListener listener) {
+        userHandler.addDataLoadListener(listener);
+    }
+
+    public void removeLoginListener(FirebaseListener listener) {
+        userHandler.removeDataLoadListener(listener);
     }
 }

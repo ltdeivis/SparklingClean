@@ -7,11 +7,17 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserHandler {
 
     private User user;
     private String uuid;
     private String refPath = "users/";
+
+    private List<FirebaseListener> dataLoadListeners = new ArrayList<>();
+    //TODO : Finish calling listeners on other methods
 
     public UserHandler() {
 
@@ -52,9 +58,12 @@ public class UserHandler {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot data : dataSnapshot.getChildren()) {
-                    if(data.child("password").equals(password)) {
-                        String name = data.child("firstName").getValue().toString();
-                        Log.d("Firebase Database", "User login as, " + name);
+
+                    String name = data.child("firstName").getValue().toString();
+                    Log.d("Firebase Database", "User found : " + name + ", Password expected " + data.child("password").getValue().toString());
+
+                    if(data.child("password").getValue().toString().equals(password)) {
+                        Log.d("Firebase Database", "Woo");
                         User newUser = new User
                                 (data.child("firstName").getValue().toString(), data.child("lastName").getValue().toString(), data.child("DoB").getValue().toString(),
                                         data.child("address").getValue().toString(), data.child("telephoneNum").getValue().toString(), data.child("username").getValue().toString(),
@@ -63,6 +72,7 @@ public class UserHandler {
                         break;
                     }
                 }
+                notifyDataLoadListeners();
             }
 
             @Override
@@ -104,5 +114,19 @@ public class UserHandler {
         };
 
         db_interface.getReference(refPath + String.valueOf(uuid)).addValueEventListener(listener);
+    }
+
+    public void addDataLoadListener(FirebaseListener listener) {
+        dataLoadListeners.add(listener);
+    }
+
+    public void removeDataLoadListener(FirebaseListener listener) {
+        dataLoadListeners.remove(listener);
+    }
+
+    private void notifyDataLoadListeners() {
+        for(FirebaseListener listener : dataLoadListeners) {
+            listener.onLoadFinish();
+        }
     }
 }
