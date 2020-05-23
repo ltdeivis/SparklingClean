@@ -45,6 +45,33 @@ public class UserHandler {
         });
     }
 
+    public void findUser(String username, final String password) {
+
+        DB_Interface db_interface = new DB_Interface();
+        db_interface.getReference("users").orderByChild("username").equalTo(username).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot data : dataSnapshot.getChildren()) {
+                    if(data.child("password").equals(password)) {
+                        String name = data.child("firstName").getValue().toString();
+                        Log.d("Firebase Database", "User login as, " + name);
+                        User newUser = new User
+                                (data.child("firstName").getValue().toString(), data.child("lastName").getValue().toString(), data.child("DoB").getValue().toString(),
+                                        data.child("address").getValue().toString(), data.child("telephoneNum").getValue().toString(), data.child("username").getValue().toString(),
+                                        data.child("password").getValue().toString(), data.child("email").getValue().toString());
+                        setUser(newUser);
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     public void addUser(String firstName, String lastName, String DoB, String address,
                         String telephoneNum, String username, String password, String email) {
         User newUser = new User(firstName, lastName, DoB, address, telephoneNum, username, password, email);

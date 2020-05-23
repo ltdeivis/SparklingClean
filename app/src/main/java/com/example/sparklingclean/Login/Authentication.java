@@ -1,24 +1,25 @@
 package com.example.sparklingclean.Login;
 
-import com.example.sparklingclean.DB.Client;
-import com.example.sparklingclean.DB.User;
+import com.example.sparklingclean.Firebase.DB.User;
+import com.example.sparklingclean.Firebase.DB.UserHandler;
 
 public class Authentication {
 
     private String username = "";
     private String password = "";
 
-    private User currentUser = null;
+    private UserHandler userHandler;
 
     public Authentication(String username, String password) {
         this.username = username;
         this.password = password;
+
+        userHandler = new UserHandler();
     }
 
     public boolean loginUser() {
-        User user = User.findUser(username, password);
-        if(user != null) {
-            currentUser = user;
+        userHandler.findUser(username, password);
+        if(userHandler.getUser() != null) {
             return true;
         }
         else {
@@ -27,26 +28,16 @@ public class Authentication {
     }
 
     public boolean registerUser(String firstName, String lastName, String address, String email, String telnum, String dob) {
-        User user = User.registerUser(username, password);
-        if(user != null) {
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setAddress(address);
-            user.setEmail(email);
-            user.setTelNum(telnum);
-            user.setDoB(dob);
-            user.setType("client");
-            user.setUserObject(new Client());
-
-            currentUser =  user;
-            return true;
-        }
-        else {
+        userHandler.findUser(email);
+        if(userHandler.getUser() == null) {
+            userHandler.addUser(firstName, lastName, dob, address, telnum, username, password, email);
+        } else {
             return false;
         }
+        return true;
     }
 
     public User getCurrentUser() {
-        return currentUser;
+        return userHandler.getUser();
     }
 }
