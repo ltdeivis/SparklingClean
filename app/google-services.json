@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "470034824520",
+    "firebase_url": "https://test-3833c.firebaseio.com",
+    "project_id": "test-3833c",
+    "storage_bucket": "test-3833c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470034824520:android:c8c70c36db909dff79c77d",
+        "android_client_info": {
+          "package_name": "com.example.sparklingclean"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470034824520-g7fj2v1r0vu5guinnordk3nhu43gba5o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4G3fj0oJpXcg2IUOSFi4JpIK5DY6rsPw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470034824520-g7fj2v1r0vu5guinnordk3nhu43gba5o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

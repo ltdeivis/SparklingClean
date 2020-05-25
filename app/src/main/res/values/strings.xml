@@ -45,4 +45,10 @@
     <string name="readBtn">Read</string>
     <string name="dummy_content">Firebase Database Test Screen</string>
 
+    <!--Landing Activity-->
+    <<string name="clients">FirebaseActivity</string>
+    <string name="employees">FirebaseActivity</string>
+    <string name="settings">FirebaseActivity</string>
+    <string name="appointments">FirebaseActivity</string>
+
 </resources>
