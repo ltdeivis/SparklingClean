@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFF">
+
+    <Button
+        android:id="@+id/clientsBtn"
+        android:layout_width="322dp"
+        android:layout_height="87dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#ABEBD2"
+        android:text="@string/Clients"
+        app:layout_constraintBottom_toTopOf="@+id/settingsBtn"
+        app:layout_constraintEnd_toEndOf="@+id/employeesBtn"
+        app:layout_constraintStart_toStartOf="@+id/employeesBtn" />
+
+    <Button
+        android:id="@+id/appointmentsBtn"
+        android:layout_width="322dp"
+        android:layout_height="374dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#ABEBD2"
+        android:text="@string/Appointments"
+        app:layout_constraintBottom_toTopOf="@+id/employeesBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/employeesBtn"
+        android:layout_width="322dp"
+        android:layout_height="87dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#ABEBD2"
+        android:text="@string/Employees"
+        app:layout_constraintBottom_toTopOf="@+id/clientsBtn"
+        app:layout_constraintEnd_toEndOf="@+id/appointmentsBtn"
+        app:layout_constraintStart_toStartOf="@+id/appointmentsBtn" />
+
+    <Button
+        android:id="@+id/settingsBtn"
+        android:layout_width="322dp"
+        android:layout_height="87dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="#ABEBD2"
+        android:text="@string/Settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/clientsBtn"
+        app:layout_constraintStart_toStartOf="@+id/clientsBtn" />
+
+</android.support.constraint.ConstraintLayout>

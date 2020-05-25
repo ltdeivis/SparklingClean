@@ -76,10 +76,12 @@
         android:id="@+id/confirmPasswordLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
         android:text="@string/confirmPassword"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/returnBtn"
+        app:layout_constraintEnd_toStartOf="@+id/confirmPasswordTxt"
         app:layout_constraintStart_toStartOf="@+id/enterPasswordLbl"
         app:layout_constraintTop_toBottomOf="@+id/enterPasswordLbl" />
 

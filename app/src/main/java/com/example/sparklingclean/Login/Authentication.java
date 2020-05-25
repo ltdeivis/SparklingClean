@@ -22,25 +22,19 @@ public class Authentication {
         userHandler.findUser(username, password);
     }
 
-    public boolean registerUser(String firstName, String lastName, String address, String email, String telnum, String dob) {
-        userHandler.findUser(email);
-        if(userHandler.getUser() == null) {
-            userHandler.addUser(firstName, lastName, dob, address, telnum, username, password, email);
-        } else {
-            return false;
-        }
-        return true;
+    public void registerUser(String firstName, String lastName, String address, String email, String telnum, String dob) {
+        userHandler.addUser(firstName, lastName, dob, address, telnum, username, password, email);
     }
 
     public User getCurrentUser() {
         return userHandler.getUser();
     }
 
-    public void addLoginListener(FirebaseListener listener) {
+    public void addDataListener(FirebaseListener listener) {
         userHandler.addDataLoadListener(listener);
     }
 
-    public void removeLoginListener(FirebaseListener listener) {
+    public void removeDataListener(FirebaseListener listener) {
         userHandler.removeDataLoadListener(listener);
     }
 }

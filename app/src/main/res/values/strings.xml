@@ -9,9 +9,9 @@
 
     <!--Register1 Activity-->
     <!--Labels-->
-    <string name="registerUsername">Enter a username:</string>
-    <string name="registerPassword">Enter a password:</string>
-    <string name="confirmPassword">Confirm password:</string>
+    <string name="registerUsername">Username:</string>
+    <string name="registerPassword">Password:</string>
+    <string name="confirmPassword">Confirm Password:</string>
 
     <!--Hints-->
     <string name="confirmPasswordHint">Confirm password</string>
@@ -44,5 +44,11 @@
     <string name="writeBtn">Write</string>
     <string name="readBtn">Read</string>
     <string name="dummy_content">Firebase Database Test Screen</string>
+
+    <!--Manager Landing Activity-->
+    <string name="Employees">Employees</string>
+    <string name="Clients">Clients</string>
+    <string name="Appointments">Appointments</string>
+    <string name="Settings">Settings</string>
 
 </resources>

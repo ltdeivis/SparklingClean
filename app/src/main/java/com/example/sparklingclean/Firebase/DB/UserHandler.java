@@ -12,6 +12,7 @@ import java.util.List;
 
 public class UserHandler {
 
+
     private User user;
     private String uuid;
     private String refPath = "users/";
@@ -27,10 +28,10 @@ public class UserHandler {
         return user;
     }
 
-    public void findUser(String email) {
+    public void findUser(String username) {
 
         DB_Interface db_interface = new DB_Interface();
-        db_interface.getReference("users").orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+        db_interface.getReference("users").orderByChild("username").equalTo(username).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot data : dataSnapshot.getChildren()) {
@@ -42,6 +43,7 @@ public class UserHandler {
                             data.child("password").getValue().toString(), data.child("email").getValue().toString());
                     setUser(newUser);
                 }
+                notifyDataLoadListeners();
             }
 
             @Override
