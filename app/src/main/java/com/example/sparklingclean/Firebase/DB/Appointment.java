@@ -19,11 +19,10 @@ public class Appointment implements Entity {
 
     }
 
-    public Appointment(String appTime, String appDate, String employeeId, String clientId, String notes){
+    public Appointment(String appTime, String appDate, String clientId, String notes){
         this.appTime = appTime;
         this.appDate = appDate;
         this.clientId = clientId;
-        this.employeeId = employeeId;
         this.notes = notes;
     }
 

@@ -32,8 +32,7 @@ public class AppointmentHandler {
                     Log.d("FirebaseTest", test);
                     Appointment newApp = new Appointment(
                             data.child("app_time").getValue().toString(), data.child("app_date").getValue().toString(),
-                            data.child("employee_id").getValue().toString(), data.child("client_id").getValue().toString(),
-                            data.child("notes").getValue().toString());
+                            data.child("client_id").getValue().toString(), data.child("notes").getValue().toString());
                     setAppointment(newApp);
                 }
             }
@@ -45,8 +44,8 @@ public class AppointmentHandler {
         });
     }
 
-    public void addAppointment(String appTime, String appDate, String employeeId, String clientId, String notes) {
-        Appointment newApp = new Appointment(appTime, appDate, employeeId, clientId, notes);
+    public void addAppointment(String appTime, String appDate, String clientId, String notes) {
+        Appointment newApp = new Appointment(appTime, appDate, clientId, notes);
         addAppointment(newApp);
     }
 
