@@ -51,4 +51,7 @@
     <string name="Appointments">Appointments</string>
     <string name="Settings">Settings</string>
 
+    <!--Client Landing Activity-->
+    <string name="Profile">Profile</string>
+
 </resources>
