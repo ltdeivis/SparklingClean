@@ -22,8 +22,8 @@ public class Authentication {
         userHandler.findUser(username, password);
     }
 
-    public void registerUser(String firstName, String lastName, String address, String email, String telnum, String dob) {
-        userHandler.addUser(firstName, lastName, dob, address, telnum, username, password, email);
+    public void registerUser(String firstName, String lastName, String address, String email, String telnum, String dob, String type) {
+        userHandler.addUser(firstName, lastName, dob, address, telnum, username, password, email, type);
     }
 
     public User getCurrentUser() {

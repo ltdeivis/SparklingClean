@@ -26,8 +26,8 @@ public class DatabaseTester {
         myRef.setValue(content);
     }
 
-    public void writeNewUser(String userId, String firstName, String lastName, String DoB, String address, String telephoneNum, String username, String password, String email) {
-        User user = new User(firstName, lastName, DoB, address, telephoneNum, username, password,email);
+    public void writeNewUser(String userId, String firstName, String lastName, String DoB, String address, String telephoneNum, String username, String password, String email, String type) {
+        User user = new User(firstName, lastName, DoB, address, telephoneNum, username, password, email, type);
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("users").child(userId).setValue(user)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

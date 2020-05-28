@@ -114,13 +114,12 @@ public class FirebaseActivity extends AppCompatActivity {
         findViewById(R.id.readBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //DatabaseTester tester = new DatabaseTester();
-                //tester.writeNewUser("1","davidas", "belfort", "19/05/98", "19 wessex gate", "08319239", "admin", "admin", "deividasliveris@rocketmail.com");
-                UserHandler userHandler = new UserHandler();
-                //userHandler.addUser("JOtaro", "belfort", "19/05/98", "19 wessex gate", "08319239", "admin", "admin", "deividasliveris@rocketmail.com");
-                TextView outputTxt = (TextView) findViewById(R.id.outputLbl);
-                userHandler.findUser("yeet");
-                //outputTxt.setText("Output : " + userHandler.getUser().firstName);
+//                DatabaseTester tester = new DatabaseTester();
+//                tester.writeNewUser("1", "gustavo", "belfort", "19/05/98", "19 wessex gate", "08319239", "admin", "admin", "deividasliveris@rocketmail.com", "employee");
+//                UserHandler userHandler = new UserHandler();
+//                TextView outputTxt = (TextView) findViewById(R.id.outputLbl);
+//                userHandler.findUser("yeet");
+//                outputTxt.setText("Output : " + userHandler.getUser().firstName);
             }
         });
 

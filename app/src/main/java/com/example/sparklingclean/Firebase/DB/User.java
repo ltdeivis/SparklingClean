@@ -17,12 +17,13 @@ public class User implements Entity {
     public String username;
     public String password;
     public String email;
+    public String type;
 
     public User(){
 
     }
 
-    public User(String firstName, String lastName, String DoB, String address, String telephoneNum, String username, String password, String email){
+    public User(String firstName, String lastName, String DoB, String address, String telephoneNum, String username, String password, String email, String type){
         this.firstName = firstName;
         this.lastName = lastName;
         this.DoB = DoB;
@@ -31,6 +32,7 @@ public class User implements Entity {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.type = type;
     }
 
 
@@ -46,6 +48,7 @@ public class User implements Entity {
         result.put("username", username);
         result.put("password", password);
         result.put("email", email);
+        result.put("type", type);
 
         return result;
     }

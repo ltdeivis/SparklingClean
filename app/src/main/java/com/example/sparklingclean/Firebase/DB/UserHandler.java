@@ -40,7 +40,7 @@ public class UserHandler {
                     User newUser = new User
                             (data.child("firstName").getValue().toString(), data.child("lastName").getValue().toString(), data.child("DoB").getValue().toString(),
                             data.child("address").getValue().toString(), data.child("telephoneNum").getValue().toString(), data.child("username").getValue().toString(),
-                            data.child("password").getValue().toString(), data.child("email").getValue().toString());
+                            data.child("password").getValue().toString(), data.child("email").getValue().toString(), data.child("type").getValue().toString());
                     setUser(newUser);
                 }
                 notifyDataLoadListeners();
@@ -69,7 +69,7 @@ public class UserHandler {
                         User newUser = new User
                                 (data.child("firstName").getValue().toString(), data.child("lastName").getValue().toString(), data.child("DoB").getValue().toString(),
                                         data.child("address").getValue().toString(), data.child("telephoneNum").getValue().toString(), data.child("username").getValue().toString(),
-                                        data.child("password").getValue().toString(), data.child("email").getValue().toString());
+                                        data.child("password").getValue().toString(), data.child("email").getValue().toString(), data.child("type").getValue().toString());
                         setUser(newUser);
                         break;
                     }
@@ -85,8 +85,8 @@ public class UserHandler {
     }
 
     public void addUser(String firstName, String lastName, String DoB, String address,
-                        String telephoneNum, String username, String password, String email) {
-        User newUser = new User(firstName, lastName, DoB, address, telephoneNum, username, password, email);
+                        String telephoneNum, String username, String password, String email, String type) {
+        User newUser = new User(firstName, lastName, DoB, address, telephoneNum, username, password, email, type);
         addUser(newUser);
     }
 

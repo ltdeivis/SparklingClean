@@ -166,6 +166,14 @@ public class LoginActivity extends AppCompatActivity {
                 return false;
             }
         } else {
+            String firstName = ((EditText) findViewById(R.id.registerFn)).getText().toString();
+            String lastName = ((EditText) findViewById(R.id.registerLn)).getText().toString();
+            String email = ((EditText) findViewById(R.id.registerEmail)).getText().toString();
+            String dob = ((EditText) findViewById(R.id.registerDoB)).getText().toString();
+            String address = ((EditText) findViewById(R.id.registerAddress)).getText().toString();
+            String telNum = ((EditText) findViewById(R.id.registerTelNum)).getText().toString();
+
+            
             return false;
         }
     }
