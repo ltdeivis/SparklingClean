@@ -1,184 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/loginbg"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/registerFn"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="40dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/fnHint"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/registerLn"
+        android:layout_below="@id/registerFn"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/lNHint"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/registerEmail"
+        android:layout_below="@id/registerLn"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/emailHint"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/registerDoB"
+        android:layout_below="@id/registerEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/doBHint"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/registerAddress"
+        android:layout_below="@id/registerDoB"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/addressHint"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/registerTelNum"
+        android:layout_below="@id/registerAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/phoneNumHint"
+        android:inputType="number" />
 
     <TextView
         android:id="@+id/enterFNLbl"
         android:layout_width="wrap_content"
+        android:layout_toStartOf="@+id/registerFn"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="130dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="40dp"
         android:text="@string/registerFN"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/registerFn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/enterLNLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="10dp"
+        android:layout_below="@id/enterFNLbl"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_toStartOf="@+id/registerLn"
         android:text="@string/registerLN"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/registerLn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/enterFNLbl"
-        app:layout_constraintTop_toBottomOf="@+id/enterFNLbl" />
+        android:textSize="18sp"  />
 
     <TextView
         android:id="@+id/emailLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="52dp"
+        android:layout_below="@id/enterLNLbl"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_toStartOf="@+id/registerEmail"
         android:text="@string/registerEmail"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/registerEmail"
-        app:layout_constraintStart_toStartOf="@+id/enterLNLbl"
-        app:layout_constraintTop_toBottomOf="@+id/enterLNLbl" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/dobLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="52dp"
+        android:layout_below="@id/emailLbl"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginTop="50dp"
+        android:layout_toStartOf="@+id/registerLn"
         android:text="@string/registerDoB"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/registerDoB"
-        app:layout_constraintHorizontal_bias="0.584"
-        app:layout_constraintStart_toStartOf="@+id/emailLbl"
-        app:layout_constraintTop_toBottomOf="@+id/emailLbl" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/addressLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="48dp"
+        android:layout_below="@id/dobLbl"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_toStartOf="@+id/registerAddress"
         android:text="@string/registerAddress"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/registerAddress"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/dobLbl"
-        app:layout_constraintTop_toBottomOf="@+id/dobLbl" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/telephoneLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="49dp"
+        android:layout_below="@id/addressLbl"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_toStartOf="@+id/registerTelNum"
         android:text="@string/registerPhoneNum"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/registerTelNum"
-        app:layout_constraintStart_toStartOf="@+id/addressLbl"
-        app:layout_constraintTop_toBottomOf="@+id/addressLbl" />
-
-    <EditText
-        android:id="@+id/registerFn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="30dp"
-        android:ems="10"
-        android:hint="@string/fnHint"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/registerLn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="@string/lNHint"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/registerFn"
-        app:layout_constraintTop_toBottomOf="@+id/registerFn"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/registerEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/emailHint"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="@+id/registerLn"
-        app:layout_constraintTop_toBottomOf="@+id/registerLn" />
-
-    <EditText
-        android:id="@+id/registerDoB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/doBHint"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="@+id/registerEmail"
-        app:layout_constraintTop_toBottomOf="@+id/registerEmail" />
-
-    <EditText
-        android:id="@+id/registerAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/addressHint"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/registerDoB"
-        app:layout_constraintTop_toBottomOf="@+id/registerDoB" />
-
-    <EditText
-        android:id="@+id/registerTelNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/phoneNumHint"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/registerAddress"
-        app:layout_constraintTop_toBottomOf="@+id/registerAddress" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/finishBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="50dp"
+        android:layout_width="72dp"
+        android:layout_height="61dp"
+        android:layout_below="@id/registerTelNum"
+        android:layout_marginStart="290dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="200dp"
         android:backgroundTint="@color/colorAccent"
         android:text="@string/finishBtn"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerTelNum" />
+        android:textAllCaps="false"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/returnBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="144dp"
+        android:layout_width="72dp"
+        android:layout_height="61dp"
+        android:layout_below="@id/telephoneLbl"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="204dp"
         android:backgroundTint="@color/colorAccent"
         android:text="@string/returnBtn"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toStartOf="@+id/finishBtn"
-        app:layout_constraintTop_toBottomOf="@+id/telephoneLbl" />
+        android:textAllCaps="false"
+        android:textColor="@android:color/white" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

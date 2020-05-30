@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:background="@drawable/loginbg"
+    android:orientation="vertical"
     tools:context=".Login.LoginActivity">
 
     <EditText
         android:id="@+id/usernameTxt"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -17,52 +21,45 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/usernameHint"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/passowrdTxt"
+        android:layout_below="@+id/usernameTxt"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/passwordHint"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/usernameTxt"
-        app:layout_constraintStart_toStartOf="@+id/usernameTxt"
-        app:layout_constraintTop_toBottomOf="@+id/usernameTxt"
-        android:autofillHints="" />
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/loginBtn"
+        android:layout_below="@+id/passowrdTxt"
+        android:layout_centerHorizontal="true"
         android:layout_width="163dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/appointments_button"
         android:backgroundTint="@color/colorAccent"
         android:text="@string/login"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/passowrdTxt"
-        app:layout_constraintStart_toStartOf="@+id/passowrdTxt"
-        app:layout_constraintTop_toBottomOf="@+id/passowrdTxt" />
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/registerBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="163dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/loginBtn"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="220dp"
-        android:layout_marginBottom="280dp"
+        android:layout_marginBottom="215dp"
         android:background="@drawable/appointments_button"
         android:backgroundTint="@color/colorAccent"
         android:text="@string/register"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.759"
-        app:layout_constraintStart_toStartOf="@+id/loginBtn"
-        app:layout_constraintTop_toBottomOf="@+id/loginBtn"
-        app:layout_constraintVertical_bias="0.211" />
-</android.support.constraint.ConstraintLayout>
+        android:textColor="#FFFFFF" />
+</RelativeLayout>

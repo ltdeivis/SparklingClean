@@ -27,7 +27,7 @@
     <string name="registerEmail">Email:</string>
     <string name="registerDoB">Date of birth:</string>
     <string name="registerAddress">Address:</string>
-    <string name="registerPhoneNum">Telephone number:</string>
+    <string name="registerPhoneNum">Tel number:</string>
 
     <!--Hints-->
     <string name="fnHint">First name</string>
