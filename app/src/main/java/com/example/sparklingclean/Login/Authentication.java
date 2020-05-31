@@ -30,6 +30,10 @@ public class Authentication {
         return userHandler.getUser();
     }
 
+    public UserHandler getUserHandler() {
+        return userHandler;
+    }
+
     public void addDataListener(FirebaseListener listener) {
         userHandler.addDataLoadListener(listener);
     }

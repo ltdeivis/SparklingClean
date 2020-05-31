@@ -12,13 +12,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sparklingclean.DB.Appointment;
 import com.example.sparklingclean.DB.DB_Interface;
 import com.example.sparklingclean.DB.User;
+import com.example.sparklingclean.Firebase.DB.ClientHandler;
 import com.example.sparklingclean.Firebase.DB.DatabaseTester;
 import com.example.sparklingclean.Firebase.DB.FirebaseActivity;
 import com.example.sparklingclean.Firebase.DB.FirebaseListener;
 import com.example.sparklingclean.Firebase.DB.UserHandler;
 import com.example.sparklingclean.MainActivity;
+import com.example.sparklingclean.MainGUI.AppontmentScreen.AppointmentActivity;
+import com.example.sparklingclean.Providers.UserProvider;
 import com.example.sparklingclean.R;
 
 import java.io.BufferedReader;
@@ -43,8 +47,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        setupDB();
-
         loginBtn = findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -65,9 +67,6 @@ public class LoginActivity extends AppCompatActivity {
         loginUsername = ((EditText) findViewById(R.id.usernameTxt)).getText().toString();
         loginPassword = ((EditText) findViewById(R.id.passowrdTxt)).getText().toString();
 
-        DatabaseTester tester = new DatabaseTester();
-
-
         final Authentication authentication = new Authentication(loginUsername, loginPassword);
 
         FirebaseListener loginListener = new FirebaseListener() {
@@ -75,7 +74,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onLoadFinish() {
                 if(authentication.getCurrentUser() != null) {
                     Log.d("Login", "Logged in as " + authentication.getCurrentUser().firstName);
-                    startActivity(new Intent(LoginActivity.this, FirebaseActivity.class));
+                    //startActivity(new Intent(LoginActivity.this, FirebaseActivity.class));
+                    startActivity(new Intent(LoginActivity.this, AppointmentActivity.class));
                 }
                 else {
                     Log.d("Login", "Login Failed");
@@ -173,13 +173,46 @@ public class LoginActivity extends AppCompatActivity {
             String address = ((EditText) findViewById(R.id.registerAddress)).getText().toString();
             String telNum = ((EditText) findViewById(R.id.registerTelNum)).getText().toString();
 
+            if(firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || dob.isEmpty()
+                || address.isEmpty() || telNum.isEmpty()) {
+                return false;
+            }
             
-            return false;
+            return true;
         }
     }
 
     private void finishBtnHandler(){
+        if(validate()) {
+            Log.d("Register", "input validated");
+            String type = "client";
+            String firstName = ((EditText) findViewById(R.id.registerFn)).getText().toString();
+            String lastName = ((EditText) findViewById(R.id.registerLn)).getText().toString();
+            String email = ((EditText) findViewById(R.id.registerEmail)).getText().toString();
+            String dob = ((EditText) findViewById(R.id.registerDoB)).getText().toString();
+            String address = ((EditText) findViewById(R.id.registerAddress)).getText().toString();
+            String telNum = ((EditText) findViewById(R.id.registerTelNum)).getText().toString();
 
+            Authentication authentication = new Authentication(username, password);
+            authentication.registerUser(firstName, lastName, address, email, telNum, dob, type);
+            Log.d("Register", "userinfo - " + firstName + lastName + address + email + telNum + dob + type);
+
+            if (authentication.getUserHandler() == null) {
+                Log.d("Register", "Failed to register");
+            } else {
+                UserProvider currentUserProvider = UserProvider.getInstance();
+                currentUserProvider.setCurrentUser(authentication.getUserHandler());
+
+                //TODO : Finish client handler code
+                ClientHandler clientHandler = new ClientHandler();
+
+                //TODO : Open mai GUI here
+                openMainGUI();
+            }
+
+        } else {
+            Log.d("Register", "input not validated");
+        }
    }
 
    private void returnBtnHandler(){
@@ -198,6 +231,12 @@ public class LoginActivity extends AppCompatActivity {
         }
    }
 
+   private void openMainGUI() {
+       //startActivity(new Intent(LoginActivity.this, FirebaseActivity.class));
+       startActivity(new Intent(LoginActivity.this, Appointment.class));
+   }
+
+   //Don't delete yet might come in use
     private void setupDB() {
         try {
             InputStream inputStream = getAssets().open("DB/db-info.txt");

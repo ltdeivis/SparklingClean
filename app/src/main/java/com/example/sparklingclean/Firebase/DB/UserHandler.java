@@ -28,6 +28,8 @@ public class UserHandler {
         return user;
     }
 
+    public String getUuid() { return uuid; }
+
     public void findUser(String username) {
 
         DB_Interface db_interface = new DB_Interface();
@@ -94,6 +96,7 @@ public class UserHandler {
         DB_Interface db_interface = new DB_Interface();
         uuid = db_interface.push(refPath);
         db_interface.insert(refPath + uuid, newUser);
+        Log.d("Register", "Users UUID - " + uuid);
 
         setUser(newUser);
     }
