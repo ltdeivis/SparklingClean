@@ -1,117 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/loginbg"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="16">
 
-    <EditText
-        android:id="@+id/registerUsernameTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="192dp"
-        android:layout_marginEnd="75dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/usernameHint"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/registerPasswordTxt"
-        android:layout_width="wrap_content"
-        android:layout_below="@+id/registerUsernameTxt"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentEnd="true"
-        android:layout_height="42dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="75dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/passwordHint"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/confirmPasswordTxt"
-        android:layout_below="@+id/registerPasswordTxt"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
-        android:layout_height="42dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="75dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/confirmPasswordHint"
-        android:inputType="textPassword" />
-
-    <TextView
-        android:id="@+id/enterUsernameLbl"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="15dp"
-        android:layout_toStartOf="@+id/registerUsernameTxt"
-        android:text="@string/registerUsername"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="150dp"
+        android:layout_weight="15"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/enterPasswordLbl"
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginLeft="24dp">
+
+            <TextView
+                android:id="@+id/enterUsernameLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/registerUsername"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/registerUsernameTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/usernameHint"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="24dp">
+
+            <TextView
+                android:id="@+id/enterPasswordLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/registerPassword"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/registerPasswordTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/passwordHint"
+                android:inputType="textPassword" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="24dp">
+
+            <TextView
+                android:id="@+id/enterPassword2Lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/registerPassword"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/confirmPasswordTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/confirmPasswordHint"
+                android:inputType="textPassword" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/enterUsernameLbl"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="15dp"
-        android:layout_toStartOf="@+id/registerPasswordTxt"
-        android:text="@string/registerPassword"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:weightSum="2">
 
-    <TextView
-        android:id="@+id/enterPassword2Lbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/enterPasswordLbl"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="15dp"
-        android:layout_toStartOf="@+id/confirmPasswordTxt"
-        android:text="@string/registerPassword"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/returnBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/returnBtn"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/nextBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/nextBtn"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
 
 
-    <Button
-        android:id="@+id/returnBtn"
-        android:layout_width="110dp"
-        android:layout_height="105dp"
-        android:layout_alignEnd="@+id/enterPassword2Lbl"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="400dp"
-        android:layout_marginEnd="-50dp"
-        android:layout_marginBottom="204dp"
-        android:backgroundTint="@color/colorAccent"
-        android:text="@string/returnBtn"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/nextBtn"
-        android:layout_width="110dp"
-        android:layout_height="105dp"
-        android:layout_alignEnd="@+id/confirmPasswordTxt"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="400dp"
-        android:layout_marginEnd="-22dp"
-        android:layout_marginBottom="208dp"
-        android:backgroundTint="@color/colorAccent"
-        android:text="@string/nextBtn"
-        android:textColor="#FFFFFF" />
-
-</RelativeLayout>
+</LinearLayout>
