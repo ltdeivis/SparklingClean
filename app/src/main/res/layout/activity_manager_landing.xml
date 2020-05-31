@@ -1,62 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#74B3CE">
-
-    <Button
-        android:id="@+id/clientsBtn"
-        android:layout_width="322dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="100dp"
-        android:background="@drawable/clients_button"
-        android:drawableStart="@drawable/ic_person_black_24dp"
-        android:text="@string/Clients"
-        app:layout_constraintBottom_toTopOf="@+id/settingsBtn"
-        app:layout_constraintEnd_toEndOf="@+id/employeesBtn"
-        app:layout_constraintStart_toStartOf="@+id/employeesBtn"
-        app:layout_constraintTop_toBottomOf="@+id/employeesBtn" />
+    android:layout_gravity="center"
+    android:background="#74B3CE"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/appointmentsBtn"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:layout_width="322dp"
         android:layout_height="87dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="600dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/appointments_button"
         android:drawableStart="@drawable/ic_web_black_24dp"
-        android:text="@string/Appointments"
-        app:layout_constraintBottom_toBottomOf="@+id/settingsBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/Appointments" />
+
+    <Button
+        android:id="@+id/clientsBtn"
+        android:layout_below="@+id/appointmentsBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_width="322dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/clients_button"
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        android:text="@string/Clients" />
 
     <Button
         android:id="@+id/employeesBtn"
+        android:layout_below="@+id/clientsBtn"
+        android:layout_centerHorizontal="true"
         android:layout_width="322dp"
         android:layout_height="87dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/employees_button"
         android:drawableStart="@drawable/ic_supervisor_account_black_24dp"
-        android:text="@string/Employees"
-        app:layout_constraintEnd_toEndOf="@+id/appointmentsBtn"
-        app:layout_constraintStart_toStartOf="@+id/appointmentsBtn"
-        app:layout_constraintTop_toBottomOf="@+id/appointmentsBtn" />
+        android:text="@string/Employees" />
 
     <Button
         android:id="@+id/settingsBtn"
+        android:layout_below="@+id/employeesBtn"
+        android:layout_centerHorizontal="true"
         android:layout_width="322dp"
         android:layout_height="87dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/settings_button"
         android:drawableStart="@drawable/ic_build_black_24dp"
-        android:text="@string/Settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/clientsBtn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/clientsBtn" />
+        android:text="@string/Settings" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

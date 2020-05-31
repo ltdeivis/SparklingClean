@@ -159,7 +159,7 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(getApplicationContext(),"Password do not match.",Toast.LENGTH_SHORT).show();
                 TextView pswLbl = (TextView) findViewById(R.id.enterPasswordLbl);
-                TextView cpswLbl = (TextView) findViewById(R.id.confirmPasswordLbl);
+                TextView cpswLbl = (TextView) findViewById(R.id.enterPassword2Lbl);
 
                 pswLbl.setTextColor(Color.RED);
                 cpswLbl.setTextColor(Color.RED);
