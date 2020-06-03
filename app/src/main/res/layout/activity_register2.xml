@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,184 +7,221 @@
     android:background="@drawable/loginbg"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/registerFn"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="40dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/fnHint"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/registerLn"
-        android:layout_below="@id/registerFn"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
-        android:layout_height="42dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="40dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/lNHint"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/registerEmail"
-        android:layout_below="@id/registerLn"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
-        android:layout_height="42dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="40dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/emailHint"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/registerDoB"
-        android:layout_below="@id/registerEmail"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
-        android:layout_height="42dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="40dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/doBHint"
-        android:inputType="date" />
-
-    <EditText
-        android:id="@+id/registerAddress"
-        android:layout_below="@id/registerDoB"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
-        android:layout_height="42dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="40dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/addressHint"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/registerTelNum"
-        android:layout_below="@id/registerAddress"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
-        android:layout_height="42dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="40dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/phoneNumHint"
-        android:inputType="number" />
-
-    <TextView
-        android:id="@+id/enterFNLbl"
-        android:layout_width="wrap_content"
-        android:layout_toStartOf="@+id/registerFn"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="40dp"
-        android:text="@string/registerFN"
-        android:textSize="18sp" />
+        android:layout_marginTop="150dp"
+        android:layout_weight="15"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/enterLNLbl"
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginLeft="24dp">
+
+            <TextView
+                android:id="@+id/enterFNLbl"
+                android:layout_width="wrap_content"
+                android:layout_toStartOf="@+id/registerFn"
+                android:layout_height="wrap_content"
+                android:text="@string/registerFN"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/registerFn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/fnHint"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginLeft="24dp">
+
+            <TextView
+                android:id="@+id/enterLNLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/enterFNLbl"
+                android:layout_toStartOf="@+id/registerLn"
+                android:text="@string/registerLN"
+                android:textSize="18sp"  />
+
+            <EditText
+                android:id="@+id/registerLn"
+                android:layout_below="@id/registerFn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/lNHint"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginLeft="62dp">
+
+            <TextView
+                android:id="@+id/emailLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/enterLNLbl"
+                android:text="@string/registerEmail"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/registerEmail"
+                android:layout_below="@id/registerLn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/emailHint"
+                android:inputType="textEmailAddress" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginLeft="7dp">
+
+            <TextView
+                android:id="@+id/dobLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/emailLbl"
+                android:layout_toStartOf="@+id/registerLn"
+                android:text="@string/registerDoB"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/registerDoB"
+                android:layout_below="@id/registerEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/doBHint"
+                android:inputType="date" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginLeft="38dp">
+
+            <TextView
+                android:id="@+id/addressLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dobLbl"
+                android:layout_toStartOf="@+id/registerAddress"
+                android:text="@string/registerAddress"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/registerAddress"
+                android:layout_below="@id/registerDoB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/addressHint"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:id="@+id/telephoneLbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/addressLbl"
+                android:layout_toStartOf="@+id/registerTelNum"
+                android:text="@string/registerPhoneNum"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/registerTelNum"
+                android:layout_below="@id/registerAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/phoneNumHint"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/enterFNLbl"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="50dp"
-        android:layout_toStartOf="@+id/registerLn"
-        android:text="@string/registerLN"
-        android:textSize="18sp"  />
+        android:orientation="horizontal"
+        android:weightSum="2">
 
-    <TextView
-        android:id="@+id/emailLbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/enterLNLbl"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="50dp"
-        android:layout_toStartOf="@+id/registerEmail"
-        android:text="@string/registerEmail"
-        android:textSize="18sp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/dobLbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/emailLbl"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginTop="50dp"
-        android:layout_toStartOf="@+id/registerLn"
-        android:text="@string/registerDoB"
-        android:textSize="18sp" />
+            <Button
+                android:id="@+id/returnBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/telephoneLbl"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/returnBtn"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/addressLbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/dobLbl"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="50dp"
-        android:layout_toStartOf="@+id/registerAddress"
-        android:text="@string/registerAddress"
-        android:textSize="18sp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/telephoneLbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/addressLbl"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="50dp"
-        android:layout_toStartOf="@+id/registerTelNum"
-        android:text="@string/registerPhoneNum"
-        android:textSize="18sp" />
+            <Button
+                android:id="@+id/finishBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/registerTelNum"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/finishBtn"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/finishBtn"
-        android:layout_width="72dp"
-        android:layout_height="61dp"
-        android:layout_below="@id/registerTelNum"
-        android:layout_marginStart="290dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="200dp"
-        android:backgroundTint="@color/colorAccent"
-        android:text="@string/finishBtn"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white" />
-
-    <Button
-        android:id="@+id/returnBtn"
-        android:layout_width="72dp"
-        android:layout_height="61dp"
-        android:layout_below="@id/telephoneLbl"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="204dp"
-        android:backgroundTint="@color/colorAccent"
-        android:text="@string/returnBtn"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white" />
-
-</RelativeLayout>
+</LinearLayout>

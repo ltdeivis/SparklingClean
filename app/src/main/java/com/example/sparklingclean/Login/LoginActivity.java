@@ -153,18 +153,23 @@ public class LoginActivity extends AppCompatActivity {
         if(isRegister1){
             String password = ((EditText) findViewById(R.id.registerPasswordTxt)).getText().toString();
             String confirmPw = ((EditText) findViewById(R.id.confirmPasswordTxt)).getText().toString();
+            String username = ((EditText) findViewById(R.id.registerUsernameTxt)).getText().toString();
 
-            if(password.equals(confirmPw)){
-                return true;
-            } else {
-                Toast.makeText(getApplicationContext(),"Password do not match.",Toast.LENGTH_SHORT).show();
-                TextView pswLbl = (TextView) findViewById(R.id.enterPasswordLbl);
-                TextView cpswLbl = (TextView) findViewById(R.id.enterPassword2Lbl);
+            if(password.length() > 0 && username.length() > 0) {
+                if (password.equals(confirmPw)) {
+                    return true;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Password do not match.", Toast.LENGTH_SHORT).show();
+                    TextView pswLbl = (TextView) findViewById(R.id.enterPasswordLbl);
+                    TextView cpswLbl = (TextView) findViewById(R.id.enterPassword2Lbl);
 
-                pswLbl.setTextColor(Color.RED);
-                cpswLbl.setTextColor(Color.RED);
-                return false;
+                    pswLbl.setTextColor(Color.RED);
+                    cpswLbl.setTextColor(Color.RED);
+                    return false;
+                }
             }
+            Toast.makeText(LoginActivity.this, "One or more fields are empty.", Toast.LENGTH_SHORT).show();
+            return false;
         } else {
             String firstName = ((EditText) findViewById(R.id.registerFn)).getText().toString();
             String lastName = ((EditText) findViewById(R.id.registerLn)).getText().toString();
