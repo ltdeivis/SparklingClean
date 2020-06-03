@@ -1,59 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
     android:background="#74B3CE"
+    android:weightSum="16"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_weight="15"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="35dp"
+        android:orientation="horizontal">
+        
     <Button
         android:id="@+id/appointmentsBtn"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_width="322dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginBottom="5dp"
         android:background="@drawable/appointments_button"
         android:drawableStart="@drawable/ic_web_black_24dp"
-        android:text="@string/Appointments" />
+        android:gravity="center"
+        android:text="@string/Appointments"
+        android:weightSum="2"
+        android:layout_height="87dp"
+        android:layout_width="322dp"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="35dp"
+            android:orientation="horizontal">
 
     <Button
         android:id="@+id/clientsBtn"
-        android:layout_below="@+id/appointmentsBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_width="322dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginBottom="5dp"
         android:background="@drawable/clients_button"
         android:drawableStart="@drawable/ic_person_black_24dp"
-        android:text="@string/Clients" />
+        android:text="@string/Clients"
+        android:layout_height="87dp"
+        android:layout_width="322dp"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="35dp"
+            android:orientation="horizontal">
 
     <Button
         android:id="@+id/employeesBtn"
-        android:layout_below="@+id/clientsBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_width="322dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginBottom="5dp"
         android:background="@drawable/employees_button"
         android:drawableStart="@drawable/ic_supervisor_account_black_24dp"
-        android:text="@string/Employees" />
+        android:text="@string/Employees"
+        android:layout_height="87dp"
+        android:layout_width="322dp"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="35dp"
+            android:orientation="horizontal">
 
     <Button
         android:id="@+id/settingsBtn"
-        android:layout_below="@+id/employeesBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_width="322dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginBottom="15dp"
         android:background="@drawable/settings_button"
         android:drawableStart="@drawable/ic_build_black_24dp"
-        android:text="@string/Settings" />
+        android:text="@string/Settings"
+        android:layout_height="87dp"
+        android:layout_width="322dp"/>
 
-</RelativeLayout>
+    </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
