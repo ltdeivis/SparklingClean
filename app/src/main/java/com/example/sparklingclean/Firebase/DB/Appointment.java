@@ -14,16 +14,18 @@ public class Appointment implements Entity {
     public String clientId;
     public String employeeId;
     public String notes;
+    public String pending;
 
     public Appointment(){
 
     }
 
-    public Appointment(String appTime, String appDate, String clientId, String notes){
+    public Appointment(String appTime, String appDate, String clientId, String notes, String pending){
         this.appTime = appTime;
         this.appDate = appDate;
         this.clientId = clientId;
         this.notes = notes;
+        this.pending = pending;
     }
 
     @Exclude
@@ -35,6 +37,7 @@ public class Appointment implements Entity {
         result.put("employee_id", employeeId);
         result.put("client_id", clientId);
         result.put("notes", notes);
+        result.put("pending", pending);
 
         return result;
     }

@@ -67,11 +67,12 @@ public class UserHandler {
                     Log.d("Firebase Database", "User found : " + name + ", Password expected " + data.child("password").getValue().toString());
 
                     if(data.child("password").getValue().toString().equals(password)) {
-                        Log.d("Firebase Database", "Woo");
+                        Log.d("Firebase Database", "uuid - " + data.getKey());
                         User newUser = new User
                                 (data.child("firstName").getValue().toString(), data.child("lastName").getValue().toString(), data.child("DoB").getValue().toString(),
                                         data.child("address").getValue().toString(), data.child("telephoneNum").getValue().toString(), data.child("username").getValue().toString(),
                                         data.child("password").getValue().toString(), data.child("email").getValue().toString(), data.child("type").getValue().toString());
+                        uuid = data.getKey();
                         setUser(newUser);
                         break;
                     }

@@ -21,7 +21,7 @@ public class UserProvider {
 
     public static UserProvider getInstance() {
         if(instance == null) {
-            return new UserProvider();
+            instance = new UserProvider();
         }
 
         return instance;

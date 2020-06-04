@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.sparklingclean.DB.Appointment;
 import com.example.sparklingclean.DB.DB_Interface;
 import com.example.sparklingclean.DB.User;
+import com.example.sparklingclean.Firebase.DB.AppointmentHandler;
 import com.example.sparklingclean.Firebase.DB.ClientHandler;
 import com.example.sparklingclean.Firebase.DB.DatabaseTester;
 import com.example.sparklingclean.Firebase.DB.FirebaseActivity;
@@ -22,6 +23,7 @@ import com.example.sparklingclean.Firebase.DB.FirebaseListener;
 import com.example.sparklingclean.Firebase.DB.UserHandler;
 import com.example.sparklingclean.MainActivity;
 import com.example.sparklingclean.MainGUI.AppontmentScreen.AppointmentActivity;
+import com.example.sparklingclean.MainGUI.AppontmentScreen.LandingPage;
 import com.example.sparklingclean.Providers.UserProvider;
 import com.example.sparklingclean.R;
 
@@ -75,7 +77,10 @@ public class LoginActivity extends AppCompatActivity {
                 if(authentication.getCurrentUser() != null) {
                     Log.d("Login", "Logged in as " + authentication.getCurrentUser().firstName);
                     //startActivity(new Intent(LoginActivity.this, FirebaseActivity.class));
-                    startActivity(new Intent(LoginActivity.this, AppointmentActivity.class));
+                    UserProvider currentUserProvider = UserProvider.getInstance();
+                    currentUserProvider.setCurrentUser(authentication.getUserHandler());
+
+                    startActivity(new Intent(LoginActivity.this, LandingPage.class));
                 }
                 else {
                     Log.d("Login", "Login Failed");
@@ -231,6 +236,14 @@ public class LoginActivity extends AppCompatActivity {
                     registerBtnHandler();
                 }
             });
+
+            loginBtn = findViewById(R.id.loginBtn);
+            loginBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    loginBtnHandler(view);
+                }
+            });
         } else{
             registerBtnHandler();
         }
@@ -238,7 +251,7 @@ public class LoginActivity extends AppCompatActivity {
 
    private void openMainGUI() {
        //startActivity(new Intent(LoginActivity.this, FirebaseActivity.class));
-       startActivity(new Intent(LoginActivity.this, Appointment.class));
+       startActivity(new Intent(LoginActivity.this, AppointmentActivity.class));
    }
 
    //Don't delete yet might come in use

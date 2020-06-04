@@ -14,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainGUI.AppontmentScreen.AppointmentActivity"></activity>
+        <activity android:name=".MainGUI.AppontmentScreen.EmployeeActivity"></activity>
+        <activity android:name=".MainGUI.AppontmentScreen.ClientActivity" />
+        <activity android:name=".MainGUI.AppontmentScreen.LandingPage" />
+        <activity android:name=".MainGUI.AppontmentScreen.AppointmentActivity" />
         <activity
             android:name=".Firebase.DB.FirebaseActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
